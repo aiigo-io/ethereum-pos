@@ -1,6 +1,7 @@
 [submodule "dependencies/go-ethereum"]
 	path = dependencies/go-ethereum
-	url = https://github.com/ethereum/go-ethereum.git
+	url = git@github.com:aiigo-io/aiigo.git
+	branch = go-ethereum-v1.14.12-stable
 [submodule "dependencies/prysm"]
 	path = dependencies/prysm
 	url = https://github.com/prysmaticlabs/prysm.git
