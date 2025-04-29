@@ -139,8 +139,8 @@ $PRYSM_CTL_BINARY testnet generate-genesis \
   --geth-genesis-json-out=$NETWORK_DIR/genesis.json
 
 # Copy config files
-cp $BINARY_DIR/config.yml $NETWORK_DIR/consensus/config.yml
-cp $BINARY_DIR/genesis.json $NETWORK_DIR/execution/genesis.json
+cp $NETWORK_DIR/config.yml $NETWORK_DIR/consensus/config.yml
+cp $NETWORK_DIR/genesis.json $NETWORK_DIR/execution/genesis.json
 
 # Create empty password file for geth
 geth_pw_file="$NETWORK_DIR/geth_password.txt"
