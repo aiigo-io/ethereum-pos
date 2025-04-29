@@ -216,7 +216,7 @@ Wants=network.target geth.service
 User=$(whoami)
 ExecStart=$PRYSM_BEACON_BINARY \\
   --datadir=$NETWORK_DIR/consensus/beacondata \\
-  --min-sync-peers=1 \\
+  --min-sync-peers=0 \\
   --genesis-state=$NETWORK_DIR/genesis.ssz \\
   --interop-eth1data-votes \\
   --chain-config-file=$NETWORK_DIR/consensus/config.yml \\
