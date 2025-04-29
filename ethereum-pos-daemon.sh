@@ -139,7 +139,7 @@ $PRYSM_CTL_BINARY testnet generate-genesis \
   --geth-genesis-json-out=$NETWORK_DIR/genesis.json
 
 # Copy config files
-cp $NETWORK_DIR/config.yml $NETWORK_DIR/consensus/config.yml
+cp $BINARY_DIR/config.yml $NETWORK_DIR/consensus/config.yml
 cp $NETWORK_DIR/genesis.json $NETWORK_DIR/execution/genesis.json
 
 # Create empty password file for geth
@@ -229,7 +229,7 @@ ExecStart=$PRYSM_BEACON_BINARY \\
   --execution-endpoint=http://$BIND_IP:$GETH_AUTH_RPC_PORT \\
   --accept-terms-of-use \\
   --jwt-secret=$NETWORK_DIR/execution/jwtsecret \\
-  --suggested-fee-recipient=0x123463a4b065722e99115d6c222f267d9cabb524 \\
+  --suggested-fee-recipient=0xbc76587a650ed157F8142d73b56781fB245270EC \\
   --minimum-peers-per-subnet=0 \\
   --p2p-tcp-port=$PRYSM_BEACON_P2P_TCP_PORT \\
   --p2p-udp-port=$PRYSM_BEACON_P2P_UDP_PORT \\
