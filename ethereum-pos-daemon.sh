@@ -133,8 +133,8 @@ echo "Generating genesis files..."
 $PRYSM_CTL_BINARY testnet generate-genesis \
   --fork=deneb \
   --num-validators=1 \
-  --chain-config-file=$INSTALL_DIR/config.yml \
-  --geth-genesis-json-in=$INSTALL_DIR/genesis.json \
+  --chain-config-file=$BINARY_DIR/config.yml \
+  --geth-genesis-json-in=$BINARY_DIR/genesis.json \
   --output-ssz=$NETWORK_DIR/genesis.ssz \
   --geth-genesis-json-out=$NETWORK_DIR/genesis.json
 
@@ -154,7 +154,7 @@ $GETH_BINARY account new --datadir "$NETWORK_DIR/execution" --password "$geth_pw
 echo "Initializing geth..."
 $GETH_BINARY init \
   --datadir=$NETWORK_DIR/execution \
-  $NETWORK_DIR/genesis.json
+  $NETWORK_DIR/execution/genesis.json
 
 # Create JWT secret for client communication
 echo "Creating JWT secret..."
