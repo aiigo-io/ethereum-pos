@@ -193,7 +193,7 @@ ExecStart=$GETH_BINARY \\
   --datadir=$NETWORK_DIR/execution \\
   --password=$geth_pw_file \\
   --maxpendpeers=50 \\
-  --verbosity=3 \\
+  --verbosity=2 \\
   --syncmode=full
 Restart=on-failure
 RestartSec=5
@@ -234,7 +234,7 @@ ExecStart=$PRYSM_BEACON_BINARY \\
   --p2p-tcp-port=$PRYSM_BEACON_P2P_TCP_PORT \\
   --p2p-udp-port=$PRYSM_BEACON_P2P_UDP_PORT \\
   --monitoring-port=$PRYSM_BEACON_MONITORING_PORT \\
-  --verbosity=info \\
+  --verbosity=warning \\
   --slasher \\
   --enable-debug-rpc-endpoints
 Restart=on-failure
@@ -266,6 +266,7 @@ ExecStart=$PRYSM_VALIDATOR_BINARY \\
   --grpc-gateway-port=$PRYSM_VALIDATOR_GRPC_GATEWAY_PORT \\
   --monitoring-port=$PRYSM_VALIDATOR_MONITORING_PORT \\
   --graffiti="ethereum-pos-validator" \\
+  --verbosity=warning \\
   --chain-config-file=$NETWORK_DIR/consensus/config.yml
 Restart=on-failure
 RestartSec=5
