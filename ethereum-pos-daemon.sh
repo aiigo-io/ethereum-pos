@@ -194,6 +194,7 @@ ExecStart=$GETH_BINARY \\
   --password=$geth_pw_file \\
   --maxpendpeers=50 \\
   --verbosity=2 \\
+  --gcmode=archive \\
   --syncmode=full
 Restart=on-failure
 RestartSec=5
