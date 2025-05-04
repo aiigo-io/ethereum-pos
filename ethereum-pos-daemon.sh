@@ -119,6 +119,14 @@ PRYSM_VALIDATOR_RPC_PORT=7000
 PRYSM_VALIDATOR_GRPC_GATEWAY_PORT=7500
 PRYSM_VALIDATOR_MONITORING_PORT=8081
 
+# Stop and disable existing services
+echo "Stopping existing services if running..."
+systemctl stop validator.service 2>/dev/null || true
+systemctl stop beacon-chain.service 2>/dev/null || true
+systemctl stop geth.service 2>/dev/null || true
+echo "Waiting for services to fully stop..."
+sleep 5
+
 # Create network directory structure
 echo "Creating network directory structure..."
 mkdir -p $NETWORK_DIR
@@ -150,8 +158,6 @@ echo "" > "$geth_pw_file"
 echo "Creating execution client account..."
 $GETH_BINARY account new --datadir "$NETWORK_DIR/execution" --password "$geth_pw_file"
 
-# Initialize geth
-echo "Initializing geth..."
 $GETH_BINARY init \
   --datadir=$NETWORK_DIR/execution \
   $NETWORK_DIR/execution/genesis.json
@@ -193,7 +199,7 @@ ExecStart=$GETH_BINARY \\
   --datadir=$NETWORK_DIR/execution \\
   --password=$geth_pw_file \\
   --maxpendpeers=50 \\
-  --verbosity=2 \\
+  --verbosity=1 \\
   --gcmode=archive \\
   --syncmode=full
 Restart=on-failure
@@ -289,6 +295,7 @@ systemctl enable geth.service
 systemctl enable beacon-chain.service
 systemctl enable validator.service
 
+echo "Starting geth service with archive mode..."
 systemctl start geth.service
 echo "Started geth service. Waiting 10 seconds before starting beacon chain..."
 sleep 10
