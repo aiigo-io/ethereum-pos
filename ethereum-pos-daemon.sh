@@ -182,7 +182,7 @@ User=$(whoami)
 ExecStart=$GETH_BINARY \\
   --networkid=${CHAIN_ID:-32382} \\
   --http \\
-  --http.api=eth,net,web3,debug,admin,txpool,miner \\
+  -http.api=eth,net,web3,debug,admin,txpool,miner \\
   --http.addr=$BIND_IP \\
   --http.corsdomain="*" \\
   --http.port=$GETH_HTTP_PORT \\
