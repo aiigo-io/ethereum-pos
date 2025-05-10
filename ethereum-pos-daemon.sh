@@ -51,7 +51,7 @@ if ! command -v curl &> /dev/null; then
     exit 1
 fi
 
-CHAIN_ID=3888
+CHAIN_ID=38888
 
 # Get the absolute path for the current directory
 INSTALL_DIR=$(pwd)
@@ -181,14 +181,14 @@ User=$(whoami)
 ExecStart=$GETH_BINARY \\
   --networkid=${CHAIN_ID:-32382} \\
   --http \\
-  --http.api=eth,net,web3 \\
+  --http.api=eth,net,web3,debug,trace \\
   --http.addr=$BIND_IP \\
   --http.corsdomain="*" \\
   --http.port=$GETH_HTTP_PORT \\
   --port=$GETH_NETWORK_PORT \\
   --metrics.port=$GETH_METRICS_PORT \\
   --ws \\
-  --ws.api=eth,net,web3 \\
+  --ws.api=eth,net,web3,debug,trace \\
   --ws.addr=$BIND_IP \\
   --ws.origins="*" \\
   --ws.port=$GETH_WS_PORT \\
