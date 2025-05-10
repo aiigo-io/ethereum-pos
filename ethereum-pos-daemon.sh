@@ -160,6 +160,7 @@ $GETH_BINARY account new --datadir "$NETWORK_DIR/execution" --password "$geth_pw
 
 $GETH_BINARY init \
   --datadir=$NETWORK_DIR/execution \
+  --state.scheme=hash \
   $NETWORK_DIR/execution/genesis.json
 
 # Create JWT secret for client communication
@@ -181,14 +182,14 @@ User=$(whoami)
 ExecStart=$GETH_BINARY \\
   --networkid=${CHAIN_ID:-32382} \\
   --http \\
-  --http.api=eth,net,web3,debug,trace \\
+  --http.api=eth,net,web3,debug,admin,txpool,miner \\
   --http.addr=$BIND_IP \\
   --http.corsdomain="*" \\
   --http.port=$GETH_HTTP_PORT \\
   --port=$GETH_NETWORK_PORT \\
   --metrics.port=$GETH_METRICS_PORT \\
   --ws \\
-  --ws.api=eth,net,web3,debug,trace \\
+  --ws.api=eth,net,web3,debug,admin,txpool,miner \\
   --ws.addr=$BIND_IP \\
   --ws.origins="*" \\
   --ws.port=$GETH_WS_PORT \\
