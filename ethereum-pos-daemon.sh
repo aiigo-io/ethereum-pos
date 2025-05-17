@@ -185,6 +185,7 @@ ExecStart=$GETH_BINARY \\
   -http.api=eth,net,web3,debug,admin,txpool,miner \\
   --http.addr=$BIND_IP \\
   --http.corsdomain="*" \\
+  --http.vhosts="localhost,testnet.aiigo.org" \\
   --http.port=$GETH_HTTP_PORT \\
   --port=$GETH_NETWORK_PORT \\
   --metrics.port=$GETH_METRICS_PORT \\
