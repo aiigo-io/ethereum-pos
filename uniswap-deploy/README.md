@@ -1,6 +1,10 @@
 # Uniswap V3 Deployment for AIIGO Blockchain
 
-This project deploys Uniswap V3 to the AIIGO blockchain using WAIGO (Wrapped AIGO) as the native wrapped token instead of WETH.
+This project aims to deploy Uniswap V3 to the AIIGO blockchain using WAIGO (Wrapped AIGO) as the native wrapped token instead of WETH.
+
+## Current Status
+
+Currently, only the WAIGO token contract is implemented and deployable. The full Uniswap V3 deployment is under development.
 
 ## Prerequisites
 
@@ -21,102 +25,30 @@ npm install
 PRIVATE_KEY=your_private_key_here
 ```
 
-## Deployment
+## WAIGO Token Deployment
 
-To deploy Uniswap V3 to the AIIGO testnet:
-
-```bash
-npm run deploy
-```
-
-This script will:
-1. Deploy WAIGO (Wrapped AIGO) token
-2. Deploy TestUSDC token
-3. Deploy UniswapV3Factory
-4. Deploy SwapRouter
-5. Deploy NFT Descriptor components for liquidity positions
-6. Create a WAIGO/USDC pool with initial price of 1 AIGO = 1000 USDC
-7. Save all deployment information to `uniswap-deployment.json`
-
-If you need to deploy the WAIGO token separately, you can directly run:
+To deploy only the WAIGO (Wrapped AIGO) token to the AIIGO testnet:
 
 ```bash
-npx hardhat run scripts/deploy_waigo.js --network aiigo
+npm run deploy-waigo
 ```
 
 For local development:
 
 ```bash
-npm run deploy:local
-```
-
-Or to deploy only the WAIGO token to the local network:
-
-```bash
 npx hardhat run scripts/deploy_waigo.js --network localhost
 ```
 
-## Adding Liquidity
+## Upcoming Features
 
-After deployment, you can add liquidity to the WAIGO/USDC pool:
+The following features are planned but not yet implemented:
 
-```bash
-npm run add-liquidity
-```
+- Full Uniswap V3 deployment (Factory, Router, NFT components)
+- WAIGO/USDC pool creation
+- Adding liquidity functionality
+- Swap functionality
 
-This script will:
-1. Deposit AIGO to get WAIGO
-2. Approve WAIGO and USDC tokens for the Position Manager
-3. Create a liquidity position in the WAIGO/USDC pool
-4. Return an NFT representing your position
-
-## Making Swaps
-
-To perform a swap on Uniswap:
-
-```bash
-npm run swap
-```
-
-This script will:
-1. Swap 0.1 WAIGO for USDC
-2. Display the swap details and rate
-
-## Using Local Network
-
-You can also deploy to a local Ethereum node by using the `:local` versions of the scripts:
-
-```bash
-npm run deploy:local
-npm run add-liquidity:local
-npm run swap:local
-```
-
-## Contract Addresses
-
-After deployment, all contract addresses are saved in `uniswap-deployment.json`:
-
-```json
-{
-  "network": {
-    "name": "AIIGO Testnet",
-    "chainId": 38888,
-    "rpc": "https://testnet.aiigo.org"
-  },
-  "tokens": {
-    "WAIGO": "0x...",
-    "USDC": "0x..."
-  },
-  "uniswap": {
-    "factory": "0x...",
-    "router": "0x...",
-    "positionManager": "0x..."
-  },
-  "pools": {
-    "WAIGO-USDC": "0x..."
-  }
-}
-```
+Once fully implemented, deployment information will be saved to `uniswap-deployment.json`.
 
 ## License
 
