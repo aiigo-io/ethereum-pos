@@ -4,7 +4,11 @@ This project aims to deploy Uniswap V3 to the AIIGO blockchain using WAIGO (Wrap
 
 ## Current Status
 
-Currently, only the WAIGO token contract is implemented and deployable. The full Uniswap V3 deployment is under development.
+Currently, only the following token contracts are implemented and deployable:
+- WAIGO (Wrapped AIGO) token
+- Yacht Coin (YTC) - an ERC20 token
+
+The full Uniswap V3 deployment is under development.
 
 ## Prerequisites
 
@@ -25,9 +29,11 @@ npm install
 PRIVATE_KEY=your_private_key_here
 ```
 
-## WAIGO Token Deployment
+## Token Deployment
 
-To deploy only the WAIGO (Wrapped AIGO) token to the AIIGO testnet:
+### WAIGO Token Deployment
+
+To deploy the WAIGO (Wrapped AIGO) token to the AIIGO testnet:
 
 ```bash
 npm run deploy-waigo
@@ -37,6 +43,20 @@ For local development:
 
 ```bash
 npx hardhat run scripts/deploy_waigo.js --network localhost
+```
+
+### Yacht Coin Deployment
+
+To deploy the Yacht Coin (YTC) token to the AIIGO testnet:
+
+```bash
+npm run deploy-yachtcoin
+```
+
+For local development:
+
+```bash
+npx hardhat run scripts/deploy_yachtcoin.js --network localhost
 ```
 
 ## Upcoming Features

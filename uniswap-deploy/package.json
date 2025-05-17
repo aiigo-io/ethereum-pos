@@ -6,6 +6,7 @@
   "scripts": {
     "compile": "hardhat compile",
     "deploy-waigo": "hardhat run scripts/deploy_waigo.js --network aiigo",
+    "deploy-yachtcoin": "hardhat run scripts/deploy_yachtcoin.js --network aiigo",
     "test": "hardhat test"
   },
   "keywords": [
